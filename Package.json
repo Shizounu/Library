@@ -1,0 +1,20 @@
+{
+	"name" : "com.shizounu.Library",
+	"version" : "1.0.0",
+
+	"displayName" : "Library",
+	"Description" : "Provides useful helper functions",
+	"unity" : "2019.1",
+
+	"dependencies" : {
+
+	},
+	"hideInEditor" : "false",
+	"keywords" : ["Library"],
+	"author" : {
+		"name" : "Erik Simon",
+		"email" : "Shizounu@gmail.com",
+		"url" : ""
+	}
+	
+}
