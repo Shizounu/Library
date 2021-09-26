@@ -1,6 +1,6 @@
 {
 	"name" : "com.shizounu.library",
-	"version" : "1.0.0",
+	"version" : "1.1.0",
 
 	"displayName" : "Shizounus Library",
 	"Description" : "Provides useful helper functions",
@@ -12,7 +12,7 @@
 	"hideInEditor" : "false",
 	"keywords" : ["Library"],
 	"author" : {
-		"name" : "Erik Simon",
+		"name" : "Shizounu",
 		"email" : "Shizounu@gmail.com",
 		"url" : ""
 	}
