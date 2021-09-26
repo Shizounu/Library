@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+
 namespace Shizounu.Library.Editor
 {
-    public class ReadOnlyAttribute : PropertyAttribute
-    {
 
-    }
-
-    [CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
+    [CustomPropertyDrawer(typeof(Shizounu.Library.Editor.ReadOnlyAttribute))]
     public class ReadOnlyPropertyDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
