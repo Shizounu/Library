@@ -1,10 +1,10 @@
 {
 	"name" : "com.shizounu.library",
-	"version" : "1.1.0",
+	"version" : "1.2.0",
 
 	"displayName" : "Shizounus Library",
-	"Description" : "Provides useful helper functions",
-	"unity" : "2021.1",
+	"Description" : "All kinds of code for my personal projects I dont wanna redo every time",
+	"unity" : "2021.3",
 
 	"dependencies" : {
 
