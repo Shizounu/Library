@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace Shizounu.AI {
+namespace Shizounu.Library.AI {
 	[CreateAssetMenu(fileName = "New State", menuName = "Custom/AI/State")]
 	public class State : ScriptableObject {
 		[SerializeField] private List<Action> enterActions = null;

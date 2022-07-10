@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Shizounu.Library.Editor;
 
-namespace Shizounu.AI {
+namespace Shizounu.Library.AI {
 	public class StateMachine : MonoBehaviour {
 
 		[SerializeField] private State startState = null;
