@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Shizounu.Library.Editor;
+using UnityEngine.AI;
 
 namespace Shizounu.Library.AI {
 	public class StateMachine : MonoBehaviour {
@@ -21,16 +22,16 @@ namespace Shizounu.Library.AI {
 				activeState?.OnEnter(this);
 			}
 		}
-		private void Awake()
-		{
-			
-		}
+		public NavMeshAgent NavMeshAgent;
 
 		private void Start() {
 			if(startState != null)
 				ActiveState = startState;
 		}
 
+		private void Update() {
+			doTick();
+		}
 		public void doTick(){
 			ActiveState?.OnUpdate(this);
 		}
