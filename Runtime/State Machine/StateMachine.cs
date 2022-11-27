@@ -22,16 +22,12 @@ namespace Shizounu.Library.AI {
 				activeState?.OnEnter(this);
 			}
 		}
-		public NavMeshAgent NavMeshAgent;
 
-		private void Start() {
+		private void Awake() {
 			if(startState != null)
 				ActiveState = startState;
 		}
 
-		private void Update() {
-			doTick();
-		}
 		public void doTick(){
 			ActiveState?.OnUpdate(this);
 		}

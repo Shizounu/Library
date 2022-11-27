@@ -1,0 +1,16 @@
+{
+    "name": "com.Shizounu.Library.StateMachine",
+    "rootNamespace": "",
+    "references": [
+        "GUID:0d3cffcde44d8e14eb14820eaeb57ef2"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

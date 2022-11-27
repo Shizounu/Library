@@ -1,0 +1,16 @@
+{
+    "name": "com.Shizounu.Library.Pathfinding",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e7e118abf70eb6241b6ca272c94eba6a"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
