@@ -11,7 +11,7 @@ namespace Shizounu.Library.ScriptableArchitecture
 
         public void Invoke(){
             for (int i = 0; i < eventListeners.Count; i++){
-                eventListeners[i].Response();
+                eventListeners[i].EventResponse();
             }
         }
 
@@ -24,6 +24,15 @@ namespace Shizounu.Library.ScriptableArchitecture
             if(eventListeners.Contains(listener)){
                 eventListeners.Remove(listener);
             }    
+        }
+
+        public static ScriptableEvent operator + (ScriptableEvent thisEvent, IScriptableEventListener listener){
+            thisEvent.RegisterListener(listener);
+            return thisEvent;
+        }
+        public static ScriptableEvent operator - (ScriptableEvent thisEvent, IScriptableEventListener listener){
+            thisEvent.RemoveListener(listener);
+            return thisEvent;
         }
     }
 }
