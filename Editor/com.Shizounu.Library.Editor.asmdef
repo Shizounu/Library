@@ -1,3 +1,19 @@
 {
-	"name": "com.Shizounu.Library.Editor"
+    "name": "com.Shizounu.Library.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e7e118abf70eb6241b6ca272c94eba6a",
+        "GUID:064218520842ec844b0c629fc80a020c",
+        "GUID:c3d71b396d1c7434aacbc95dfeef1bbb",
+        "GUID:565c2de779a8f9847b0cb3fc3374144f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

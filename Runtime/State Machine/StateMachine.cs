@@ -2,14 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Shizounu.Library.Editor;
 using UnityEngine.AI;
 
 namespace Shizounu.Library.AI {
 	public class StateMachine : MonoBehaviour {
 
 		[SerializeField] private State startState = null;
-		[SerializeField, ReadOnly] private State activeState;
+		[SerializeField] private State activeState;
 		public State ActiveState {
 			get => activeState;
 			set {
