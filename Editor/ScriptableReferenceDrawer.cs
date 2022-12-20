@@ -5,7 +5,7 @@ using UnityEditor;
 
 namespace Shizounu.Library.Editor
 {
-    public class ScriptableVariableDrawer : PropertyDrawer {
+    public class ScriptableReferenceDrawer : PropertyDrawer {
         private readonly string[] popupOptions = {
             "Use Constant",
             "Use Variable"
@@ -46,6 +46,9 @@ namespace Shizounu.Library.Editor
             EditorGUI.PropertyField(position, 
                 useConstant.boolValue ? constantValue : variable, 
                 GUIContent.none);
+            if(!useConstant.boolValue && variable != null){
+                
+            }
 
             if (EditorGUI.EndChangeCheck())
                 property.serializedObject.ApplyModifiedProperties();
@@ -56,14 +59,14 @@ namespace Shizounu.Library.Editor
     }
     
     [CustomPropertyDrawer(typeof(Shizounu.Library.ScriptableArchitecture.Vector3Reference))]
-    public class ScriptableVector3Drawer : ScriptableVariableDrawer{}
+    public class ScriptableVector3Drawer : ScriptableReferenceDrawer{}
 
     [CustomPropertyDrawer(typeof(Shizounu.Library.ScriptableArchitecture.FloatReference))]
-    public class ScriptableFloatDrawer : ScriptableVariableDrawer{}
+    public class ScriptableFloatDrawer : ScriptableReferenceDrawer{}
 
     [CustomPropertyDrawer(typeof(Shizounu.Library.ScriptableArchitecture.IntReference))]
-    public class ScriptableIntDrawer : ScriptableVariableDrawer{}
+    public class ScriptableIntDrawer : ScriptableReferenceDrawer{}
 
     [CustomPropertyDrawer(typeof(Shizounu.Library.ScriptableArchitecture.BoolReference))]
-    public class ScriptablBoolDrawer : ScriptableVariableDrawer{}
+    public class ScriptablBoolDrawer : ScriptableReferenceDrawer{}
 }
