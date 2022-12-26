@@ -12,6 +12,7 @@ namespace Shizounu.Library.Editor
         };
 
         private GUIStyle popupStyle;
+        
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
@@ -48,6 +49,8 @@ namespace Shizounu.Library.Editor
                 GUIContent.none);
             if(!useConstant.boolValue && variable != null){
                 
+
+                
             }
 
             if (EditorGUI.EndChangeCheck())
@@ -56,6 +59,7 @@ namespace Shizounu.Library.Editor
             EditorGUI.indentLevel = indent;
             EditorGUI.EndProperty();
         }
+
     }
     
     [CustomPropertyDrawer(typeof(Shizounu.Library.ScriptableArchitecture.Vector3Reference))]
