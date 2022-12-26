@@ -10,8 +10,9 @@ public class InlineDrawerAttributeDrawer: PropertyDrawer {
     //private bool _isFolded = true;
 
     public override void OnGUI(Rect rect, SerializedProperty property, GUIContent label) {
+
         int count = CountChildren(property);
-        rect.height -= SPACE_AFTER_ELEMENT;
+        rect.height -= (count != 1 ? SPACE_AFTER_ELEMENT : 0);
         rect.height /= count;
         EditorGUI.PropertyField(rect, property, label); //draw the field for the reference
         
@@ -57,9 +58,8 @@ public class InlineDrawerAttributeDrawer: PropertyDrawer {
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
         float height = EditorGUI.GetPropertyHeight(property);
-        //if(!_isFolded) return height;
-        SerializedObject serializedObject = new(property.objectReferenceValue);
-        SerializedProperty internalProperty = serializedObject.GetIterator();
+        if(property.objectReferenceValue == null) return EditorGUIUtility.singleLineHeight;
+        SerializedProperty internalProperty = new SerializedObject(property.objectReferenceValue).GetIterator();
 
         if(!internalProperty.hasVisibleChildren) return height;
         if(!internalProperty.NextVisible(true)) return height;
