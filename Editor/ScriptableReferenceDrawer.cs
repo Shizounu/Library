@@ -17,13 +17,11 @@ namespace Shizounu.Library.Editor
         private bool isExpanded;
 
 
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
-        {
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label){
             if(popupStyle == null){
                 popupStyle = new GUIStyle(GUI.skin.GetStyle("PaneOptions"));
                 popupStyle.imagePosition = ImagePosition.ImageOnly;
             }
-            Rect cachedBase = position;
 
             label = EditorGUI.BeginProperty(position, label, property);
             position = EditorGUI.PrefixLabel(position, label);
@@ -45,19 +43,11 @@ namespace Shizounu.Library.Editor
             EditorGUI.indentLevel = 0;
 
             int result = EditorGUI.Popup(buttonRect, useConstant.boolValue ? 0 : 1, popupOptions, popupStyle);
-
             useConstant.boolValue = result == 0;
-            isExpanded = useConstant.boolValue;
+
             EditorGUI.PropertyField(position, 
                 useConstant.boolValue ? constantValue : variable, 
                 GUIContent.none);
-            if(!useConstant.boolValue && variable != null){
-                /*
-                position = cachedBase;
-                position.y += EditorGUIUtility.singleLineHeight;
-                EditorGUI.InspectorTitlebar(position, true, variable.objectReferenceValue, true);
-                */
-            }
 
             if (EditorGUI.EndChangeCheck())
                 property.serializedObject.ApplyModifiedProperties();
@@ -70,6 +60,8 @@ namespace Shizounu.Library.Editor
         {
             return base.GetPropertyHeight(property, label);
         }
+
+
 
     }
     

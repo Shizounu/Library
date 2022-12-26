@@ -25,6 +25,7 @@ public class InlineDrawerAttributeDrawer: PropertyDrawer {
 
         if(!internalProperty.NextVisible(true)) return;
         while (internalProperty.NextVisible(false)){
+            EditorGUI.indentLevel = 1;
             rect.y += rect.height + SPACE_BETWEEN_ELEMENTS;
             EditorGUI.PropertyField(rect, internalProperty, internalProperty.hasChildren);
             if(internalProperty.isArray){
