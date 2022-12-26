@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class InlineDrawerAttribute : PropertyAttribute
+namespace Shizounu.Library.Editor
 {
-    
+    public class InlineDrawerAttribute : PropertyAttribute
+    {
+        
+    }
 }
