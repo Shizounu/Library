@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using Shizounu.Library.AI;
 
 public class NodeBasedEditor : EditorWindow
 {
@@ -121,6 +122,7 @@ public class NodeBasedEditor : EditorWindow
             connections = new List<Connection>();
 
         connections.Add(new Connection(selectedInPoint, selectedOutPoint, OnClickRemoveConnection));
+        selectedInPoint.node.nodeState.transitions.Add(new Transition(selectedOutPoint.node.nodeState));
     }
 
     private void ClearConnectionSelection()
@@ -168,6 +170,20 @@ public class NodeBasedEditor : EditorWindow
     private void OnClickRemoveConnection(Connection connection)
     {
         connections.Remove(connection);
+        foreach (var item in connection.inPoint.node.nodeState.transitions){
+            if(item.transitionState == connection.outPoint.node.nodeState){
+                connection.inPoint.node.nodeState.transitions.Remove(item);
+            }
+        } 
+
+        //copies list and removes all the conenctions with the node I am removing a connection from
+        List<Transition> transitionsCopy = connection.inPoint.node.nodeState.transitions;
+        for (int i = transitionsCopy.Count; i > 0; i--){
+            if(transitionsCopy[i].transitionState == connection.outPoint.node.nodeState){
+                connection.inPoint.node.nodeState.transitions.Remove(transitionsCopy[i]);
+            }
+        }
+        connection.inPoint.node.nodeState.transitions = transitionsCopy;
     }
 
     
@@ -293,8 +309,10 @@ public class NodeBasedEditor : EditorWindow
 
 public class Node
 {
+    public State nodeState;
+
+
     public Rect rect;
-    public string title;
     public bool isDragged;
     public bool isSelected;
     public ConnectionPoint inPoint;
@@ -307,13 +325,14 @@ public class Node
 
     public Node(Vector2 position, float width, float height, GUIStyle nodeStyle, GUIStyle selectedStyle, GUIStyle inPointStyle, GUIStyle outPointStyle, Action<ConnectionPoint> OnClickInPoint, Action<ConnectionPoint> OnClickOutPoint, Action<Node> OnClickRemoveNode)
     {
-        rect = new Rect(position.x, position.y, width, height);
+        rect = new Rect(position.x, position.y, width * 1.5f, height * 1.5f);
         style = nodeStyle;
         inPoint = new ConnectionPoint(this, ConnectionPointType.In, inPointStyle, OnClickInPoint);
         outPoint = new ConnectionPoint(this, ConnectionPointType.Out, outPointStyle, OnClickOutPoint);
         defaultNodeStyle = nodeStyle;
         selectedNodeStyle = selectedStyle;
         OnRemoveNode = OnClickRemoveNode;
+
     }
 
     public void Drag(Vector2 delta)
@@ -325,7 +344,11 @@ public class Node
     {
         inPoint.Draw();
         outPoint.Draw();
-        GUI.Box(rect, title, style);
+        GUI.Box(rect, "", style);
+        
+        ///TODO: MAKE PRETTY
+        Rect stateRect = new Rect(rect.position + rect.size * 0.5f - rect.size * 0.35f, rect.size * 0.7f);
+        nodeState = (State)EditorGUI.ObjectField(stateRect,nodeState, typeof(State), false);
     }
 
     public bool ProcessEvents(Event e)
@@ -341,6 +364,8 @@ public class Node
                         GUI.changed = true;
                         isSelected = true;
                         style = selectedNodeStyle;
+                        if(nodeState != null)
+                            PopUpAssetInspector.Create(nodeState);
                     }
                     else
                     {
@@ -429,8 +454,7 @@ public class ConnectionPoint
 
         if (GUI.Button(rect, "", style))
         {
-            if (OnClickConnectionPoint != null)
-            {
+            if (OnClickConnectionPoint != null){
                 OnClickConnectionPoint(this);
             }
         }
@@ -472,3 +496,29 @@ public class Connection
     }
 }
 
+///https://forum.unity.com/threads/custom-editor-open-new-inspector-window-and-show-asset.1167818/
+public class PopUpAssetInspector : EditorWindow
+{
+    
+   private UnityEngine.Object asset;
+   private Editor assetEditor;
+   
+   public static PopUpAssetInspector Create(UnityEngine.Object asset)
+   {
+      var window = CreateWindow<PopUpAssetInspector>($"{asset.name} | {asset.GetType().Name}");
+      window.asset = asset;
+      window.assetEditor = Editor.CreateEditor(asset);
+      return window;
+   }
+ 
+   private void OnGUI()
+   {
+      GUI.enabled = false;
+      asset = EditorGUILayout.ObjectField("Asset", asset, asset.GetType(), false);
+      GUI.enabled = true;
+ 
+      EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+      assetEditor.OnInspectorGUI();
+      EditorGUILayout.EndVertical();
+   }
+}

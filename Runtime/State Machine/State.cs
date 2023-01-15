@@ -7,10 +7,10 @@ using UnityEngine;
 namespace Shizounu.Library.AI {
 	[CreateAssetMenu(fileName = "New State", menuName = "Shizounu/AI/State")]
 	public class State : ScriptableObject {
-		[SerializeField] private List<Action> enterActions = null;
-		[SerializeField] private List<Action> updateActions = null;
-		[SerializeField] private List<Action> exitActions = null;
-		[SerializeField] private List<Transition> transitions = null;
+		[SerializeField] public List<Action> enterActions = null;
+		[SerializeField] public List<Action> updateActions = null;
+		[SerializeField] public List<Action> exitActions = null;
+		[SerializeField] public List<Transition> transitions = null;
 
 
 		public void OnEnter(StateMachine stateMachine) {
@@ -40,6 +40,9 @@ namespace Shizounu.Library.AI {
 
 	[Serializable]
 	public class Transition {
+		public Transition(State toState){
+			this.transitionState = toState;
+		}
 		public Decision decision;
 		public bool invertDecision;
 		public State transitionState;
