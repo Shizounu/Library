@@ -60,9 +60,6 @@ namespace Shizounu.Library.Editor
         {
             return base.GetPropertyHeight(property, label);
         }
-
-
-
     }
     
     [CustomPropertyDrawer(typeof(Shizounu.Library.ScriptableArchitecture.Vector3Reference))]
