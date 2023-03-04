@@ -6,7 +6,6 @@ namespace Shizounu.Library.ScriptableArchitecture
 {
     public interface IScriptableEventListener
     {
-        ScriptableEvent scriptableEvent {get; set;}
         void EventResponse();
     }
 }
