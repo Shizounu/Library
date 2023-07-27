@@ -20,8 +20,6 @@ namespace Shizounu.Library.ScriptableArchitecture
         public ScriptableEvent onRuntimeValueChange;
         public void OnBeforeSerialize(){
             runtimeValue = initialValue;
-            if(onRuntimeValueChange != null)
-                onRuntimeValueChange.Invoke();
         }
         public void OnAfterDeserialize(){
 
@@ -42,6 +40,14 @@ namespace Shizounu.Library.ScriptableArchitecture
 
         public T Value{
             get { return useConstant ? ConstantValue : Variable.runtimeValue;}
+            set { 
+                if(useConstant){
+                    Debug.LogError("Cant change constant");
+                    return;
+                }
+
+                Variable.runtimeValue = value;
+            }
         }
     }
     
