@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Shizounu.Library.ScriptableArchitecture
 {
-    public abstract class ScriptableVariable<T> : ScriptableObject, ISerializationCallbackReceiver {
+    public abstract class ScriptableVariable<T> : ScriptableObject {
         [SerializeField] T initialValue;
         private T _runtimeValue;
         public T runtimeValue{
@@ -18,10 +18,10 @@ namespace Shizounu.Library.ScriptableArchitecture
 
 
         public ScriptableEvent onRuntimeValueChange;
-        public void OnBeforeSerialize(){
+        public void OnEnable(){
             runtimeValue = initialValue;
         }
-        public void OnAfterDeserialize(){
+        public void OnDisable(){
 
         }
     }
