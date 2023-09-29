@@ -52,6 +52,7 @@ namespace Shizounu.Library.AI
     }
 
     public interface IAStarTile{
+        Transform transform {get;}
         float TraversalCost {get; set;}
         List<IAStarTile> Adjacencies {get; set;}
         float Heuristic(IAStarTile goal);
