@@ -155,7 +155,7 @@ namespace Shizounu.Library.Editor.DialogueEditor.Windows
         {
             this.AddStyleSheets(
                 "Packages/Library/Editor/Dialogue/Style Sheets/ViewStyles.uss",
-                "Packages/Library/Editor/Dialogue/Style Sheets/ViewStyles.uss"
+                "Packages/Library/Editor/Dialogue/Style Sheets/NodeStyle.uss"
             );
         }
 

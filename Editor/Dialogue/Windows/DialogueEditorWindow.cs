@@ -35,13 +35,13 @@ namespace Shizounu.Library.Editor.DialogueEditor.Windows
 
             toolbar.Add(ElementUtility.CreateSOField<DialogueData>("File to Load", null ,change => data = (DialogueData)change.newValue));
             toolbar.Add(ElementUtility.CreateButton("Load", () => DoLoad()));
-            toolbar.AddStyleSheets("Packages/Library/Editor/Dialogue/Style Sheets/ViewStyles.uss/ToolbarStyle.uss");
+            toolbar.AddStyleSheets("Packages/Library/Editor/Dialogue/Style Sheets/ToolbarStyle.uss");
 
             rootVisualElement.Add(toolbar);
         }
         private void AddStyles()
         {
-            rootVisualElement.AddStyleSheets("Packages/Library/Editor/Dialogue/Style Sheets/ViewStyles.uss/Variables.uss");
+            rootVisualElement.AddStyleSheets("Packages/Library/Editor/Dialogue/Style Sheets/Variables.uss");
         }
 
         private void AddGraphView()
