@@ -1,9 +1,8 @@
 {
-    "name": "com.Shizounu.Library.Pathfinding",
+    "name": "com.Shizounu.Library.Influencemaps",
     "rootNamespace": "",
     "references": [
-        "GUID:e7e118abf70eb6241b6ca272c94eba6a",
-        "GUID:75ced4b07c5ab8a47b5ebb400a59ab1f"
+        "GUID:e7e118abf70eb6241b6ca272c94eba6a"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
